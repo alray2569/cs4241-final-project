@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i');
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+body {
+    background-color: #e9f;
+    padding: 0;
+    margin: 0;
+	position: absolute;
+	top: 0px;
+	font-family: 'PT Serif';
+}
+
+main, header {
+    color: #000;
+    width: 980px;
+    padding: 10px;
+    margin-left: calc(50vw - 500px);
+	margin-right: calc(50vw - 500px);
+	
+    -webkit-animation-name: fadein;
+    -webkit-animation-duration: 1s;
+    -moz-animation-name: fadein;
+    -moz-animation-duration: 1s;
+    -o-animation-name: fadein;
+    -o-animation-duration: 1s;
+    animation-name: fadein;
+    animation-duration: 1s;
+}
+
+main {
+    background-color: #ccc;
+    height: calc(100vh - 200px);
+	overflow-y: auto;
+	margin-top: 0;
+}
+
+header {
+	text-align: center;
+	height: 100px;
+	vertical-align: middle;
+	display: block;
+	background: #999;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+h1 {
+	margin-bottom: 0;
+	margin-top: 5px;
+	font-size: 36pt;
+	vertical-align: middle;
+}
+
+form {
+	width: 80%;
+	height: 50px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form * {
+	height: 100%;
+	font-size: 16pt;
+}
+
+form #qbox {
+	width: 70%;
+}
+
+#subbutton, #subbutton2 {
+	width: 30%;
+}
+
+form#edit input {
+	width: 50%;
+}
+
+form#edit select {
+	width: 20%;`
+}
+
+ul {
+	display: block;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	border-collapse: collapse;
+	padding: 0;
+}
+
+li {
+	display: block;
+	width: 100%;
+	height: 40px;
+	list-style-type: none;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 10px 0;
+	text-align: center;
+	margin-bottom: 5px;
+	background-color: #eee;
+}
+
+.center {
+	text-align: center;
+}
+
+/* Width corrections for smaller screens */
+@media (max-width: 1040px) and (min-width: 400px) {
+    main, header {
+		width: calc(100vw - 60px);
+		margin-left: 20px;
+		margin-right: 20px;
+    }
+}
+
+/* Mobile support */
+@media (max-width: 400px), (max-height: 700px), mobile {
+	header, main {
+		width: calc(95vw - 20px);
+		margin-left: 20px;
+	}
+	
+	header {
+		height: calc(15vh - 20px);
+		margin: 2.5vh 2.5vw;
+	}
+	
+	main {
+		height: calc(77.5vh - 20px);
+		margin: 0 2.5vw 2.5vh 2.5vw;
+	}
+	
+	h1 {
+		font-size: calc(10vh - 20px);
+	}
+	
+	form {
+		max-height: 10vh;
+	}
+}
