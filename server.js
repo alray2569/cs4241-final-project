@@ -15,31 +15,23 @@
 
   Logging:
       All requests are logged to console. The path that was assumed by the system, and the
-      status code it returned are listed. Possible results for a query to index.html are:
-
-index.html: 200 OK
-index.html: 404 Not Found
-index.html: 404 Not Found, and 404 page could not be loaded
-index.html: 504 Timed Out
-
-
-  Note: All requests time out after maxproct milliseconds. This will return no content, and a 504 status.
+      status code it returned are listed. 
  */
-const exts = { "html": "text/html",
-	       "css" : "text/css",
-	       "js"  : "application/javascript",
-	       "png" : "image/png",
-	       "txt" : "text/plain",
-	       "ico" : "image/vnd.microsoft.icon",
-	       "json": "application/json",
-	       "default" : "text/html"
-	     };
+const exts = {"html": "text/html",
+			  "css" : "text/css",
+			  "js"  : "application/javascript",
+			  "png" : "image/png",
+			  "txt" : "text/plain",
+			  "ico" : "image/vnd.microsoft.icon",
+			  "json": "application/json",
+			  "md"  : "text/markdown",
+			  "default" : "text/html"
+			 };
 
 const path404 = "404.html"; // path to 404 error page
 const path403 = "403.html"; // path to 403 error page
 const indexname = "index.html"; // index pages will be located at this file in each folder
 const assumeext = "html"; // extension to assume if none given
-const maxproct = 5000; // time to process request. Will time out after this many milliseconds
 const defport = 8080; // port to use if process.env.PORT not set
 
 var http = require('http'),
@@ -55,23 +47,28 @@ var server = http.createServer( (req, res) => {
     path = uri.pathname;
     path = "public" + path;
 
-    if (path.substr(path.lastIndexOf("/") + 1,1) === ".") {
-	// permission denied, file was private
-	fs.readFile(path403, (error, content) => { // Load the 404 page!
-	    res.writeHead(403); 
-	    if (error) { // could not load 403 page. Should just end response here.
-		res.end();
-		console.log(path + ": 403 Forbidden, and 403 page could not be loaded.");
-	    }
-	    else {
-		res.end(content, {'Content-type': 'text/html'});
-		console.log(pad(path, 25) + "403  ");
-	    }
-	});
-
-	return;
+    if ((path.substr(path.lastIndexOf("/") + 1,1) === ".") ||
+	    (path.includes(".."))) {
+		// permission denied, file was private
+		fs.readFile(path403, (error, content) => { // Load the 404 page!
+			res.writeHead(403); 
+			if (error) { // could not load 403 page. Should just end response here.
+				res.end();
+				console.log(path + ": 403 Forbidden, and 403 page could not be loaded.");
+			}
+			else {
+				res.end(content, {'Content-type': 'text/html'});
+				console.log(pad(path, 25) + "403  ");
+			}
+		});
+		
+		return;
     }
-				
+    
+    if (path.toLocaleLowerCase() === "public/readme.md" || path.toLocaleLowerCase() === "public/index.html" || path.toLocaleLowerCase() === "public/") {
+		path = "public/../README.md";
+	}
+	
     ext = path.substring(path.lastIndexOf(".") + 1);
     mime = exts[ext] || exts.default;
 
@@ -98,25 +95,25 @@ var server = http.createServer( (req, res) => {
     path = path.replace(/\/\//g, '/');
 
     fs.readFile(path, (error, content) => {
-	
-	if (error) {
-	    fs.readFile(path404, (error, content) => { // Load the 404 page!
-		res.writeHead(404); 
-		if (error) { // could not load 404 page. Should just end response here.
-		    res.end();
+		
+		if (error) {
+			fs.readFile(path404, (error, content) => { // Load the 404 page!
+				res.writeHead(404); 
+				if (error) { // could not load 404 page. Should just end response here.
+					res.end();
+				}
+				else {
+					res.end(content, {'Content-type': 'text/html'});
+				}
+				console.log(pad(path,25) + "404  ");
+			});
 		}
 		else {
-		    res.end(content, {'Content-type': 'text/html'});
+			res.writeHead(200, {'Content-type': mime});
+			res.end(content, 'utf-8');
+			console.log(pad(path,25) + "200  " + pad(mime,15));
 		}
-		console.log(pad(path,25) + "404  ");
-	    });
-	}
-	else {
-	    res.writeHead(200, {'Content-type': mime});
-	    res.end(content, 'utf-8');
-	    console.log(pad(path,25) + "200  " + pad(mime,15));
-	}
-    });
+	});
     
 });
 

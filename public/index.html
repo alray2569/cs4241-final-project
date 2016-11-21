@@ -10,23 +10,50 @@
 		<!--JQUERY-->
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 		
-		<!--MY SCRIPTS-->
-		
+		<!--ANGULARJS-->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	</head>
-	<body>
+	<body 
+		  data-ng-app="WPIHistory" 
+		  data-ng-controller="controller" 
+		  data-role="application">
 		<header>
 			<h1>WPI: A History</h1>
+			<p id="subtitle">{{year}}</p>
+			<nav>
+				<ul>
+					<li>
+						<a href="javascript:void;" data-ng-click="goto(year - 10)" data-ng-if="year !== 1868" name="Back 10 years">&lt;&lt;</a>
+					</li><!--
+					--><li data-ng-if="year < years[2]"> </li><!--
+					--><li data-ng-if="year < years[1]"> </li><!--
+					--><li data-ng-repeat="x in years track by $index" data-ng-if="!((x + 20 < year) || (x - 20 > year))">
+						<a href="javascript:void;" data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
+						<span style="font-weight: bold;" data-ng-if="x === year">{{x}}</span>
+					</li><!--
+					--><li data-ng-if="year > years[years.length - 3]"> </li><!--
+					--><li data-ng-if="year > years[years.length - 2]"> </li><!--
+					--><li>
+						<a href="javascript:void;" data-ng-click="goto(year + 10)" data-ng-if="year !== 2018" name="Forward 10 years">&gt;&gt;</a>
+					</li>
+				</ul>
+			</nav>
 		</header>
-		<main>
-			<section id="content">
-			
-			</section>
-		</main>
-		<section id="map">
-			<h2>Map of WPI in 
-			<svg id="mapsvg" width="" height="">
+		<div class="content">
+			<main>
+				<section id="content">
 				
-			</svg>
-		</section>
+				</section>
+			</main>
+			<section id="map">
+				<h2>Map of WPI in {{year}}</h2>
+				<svg id="mapsvg" width="" height="">
+					
+				</svg>
+			</section>
+		</div>
+		
+		<!--ANGULAR MODULES, AS PER SPECS-->
+		<script src="apps/wpihistory.js"></script>
 	</body>
 </html>
