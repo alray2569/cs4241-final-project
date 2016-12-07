@@ -25,6 +25,7 @@ const exts = {"html": "text/html",
 			  "ico" : "image/vnd.microsoft.icon",
 			  "json": "application/json",
 			  "md"  : "text/markdown",
+			  "svg" : "image/svg+xml",
 			  "default" : "text/html"
 			 };
 

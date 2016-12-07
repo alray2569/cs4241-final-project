@@ -8,10 +8,14 @@
 		<title>WPI: A History</title>
 		
 		<!--JQUERY-->
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+				integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" 
+				crossorigin="anonymous">
+		</script>
 		
 		<!--ANGULARJS-->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js">
+		</script>
 	</head>
 	<body 
 		  data-ng-app="WPIHistory" 
@@ -47,9 +51,9 @@
 			</main>
 			<section id="map">
 				<h2>Map of WPI in {{year}}</h2>
-				<svg id="mapsvg" width="" height="">
-					
-				</svg>
+				<div style="background-color:white" id="maphere">
+					<script src="apps/map.js"></script>
+				</div>
 			</section>
 		</div>
 		
