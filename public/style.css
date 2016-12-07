@@ -31,14 +31,15 @@ body {
 
 div.content, header {
     color: #000;
-	-webkit-animation-name: fadein;
+	visibility: hidden;
     -webkit-animation-duration: 1s;
-    -moz-animation-name: fadein;
     -moz-animation-duration: 1s;
-    -o-animation-name: fadein;
     -o-animation-duration: 1s;
-    animation-name: fadein;
     animation-duration: 1s;
+}
+
+section, header {
+	background-color: #999;
 }
 
 header {
@@ -82,6 +83,45 @@ nav ul li {
 	text-align: center;
 }
 
+#maphere {
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+	width: calc(100% - 20px);
+	margin: 10px;
+	visibility: hidden;
+}
+
+h2 {
+	display: block;
+	text-align: center;
+	margin: 5px;
+			
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+		
+	-webkit-transform-origin: left top 0;
+	-ms-transform-origin: left top 0;
+	transform-origin: left top 0;
+		
+	white-space: nowrap;
+	width: 20px;
+		
+	position: relative;
+	left: 30px;
+}
+
+section#map {
+	display: inline-flex;
+}
+	
+section {
+	width: calc(50% - 10px);
+	min-height: calc(50% - 10px);
+}
+
 @media mobile {
 	
 }
@@ -121,18 +161,6 @@ nav ul li {
 	h1 {
 		margin-bottom: 0;
 		margin-top: 5px;
-	}
-
-	section#map {
-		display: block;
-		position: absolute;
-		
-		width: calc(50% - 10px);
-		top: 0;
-		right: 0;
-		left: auto;
-		bottom: auto;
-		margin-right: 0;
-		height: calc(50% - 10px);
+		padding: 0;
 	}
 }

@@ -66,7 +66,7 @@ var server = http.createServer( (req, res) => {
 		return;
     }
     
-    if (path.toLocaleLowerCase() === "public/readme.md" || path.toLocaleLowerCase() === "public/index.html" || path.toLocaleLowerCase() === "public/") {
+    if (path.toLocaleLowerCase() === "public/readme.md") {
 		path = "public/../README.md";
 	}
 	

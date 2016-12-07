@@ -16,6 +16,12 @@
 		<!--ANGULARJS-->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js">
 		</script>
+		
+		<!--MY SCRIPTS-->
+		<script src="js/buildings.js"></script>
+		<script src="js/map.js"></script>
+		
+		<script src="js/onload.js"></script> <!--PUT ME LAST-->
 	</head>
 	<body 
 		  data-ng-app="WPIHistory" 
@@ -50,14 +56,14 @@
 				</section>
 			</main>
 			<section id="map">
-				<h2>Map of WPI in {{year}}</h2>
-				<div style="background-color:white" id="maphere">
-					<script src="apps/map.js"></script>
+				<h2>WPI Map, {{year}}</h2>
+				<div style="background-color:white" 
+					 id="maphere">
 				</div>
 			</section>
 		</div>
 		
 		<!--ANGULAR MODULES, AS PER SPECS-->
-		<script src="apps/wpihistory.js"></script>
+		<script src="js/app.js"></script>
 	</body>
 </html>

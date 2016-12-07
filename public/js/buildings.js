@@ -1,5 +1,3 @@
-var app = new angular.module("WPIHistory", []);
-
 var buildings = [
 	{name: "bh", year: 1865},
 	{name: "wb", year: 1865},
@@ -35,35 +33,3 @@ var buildings = [
 	{name: "g2", year: 2013},
 	{name: "ps", year: 1992}
 ];
-
-function updateMap (newYear) {
-	buildings.forEach(function (building) {
-		console.log(building);
-		if (building.year <= newYear) {
-			$("#" + building.name)[0]
-				.setAttribute("visibility", "visible");
-		}
-		else {
-			$("#" + building.name)[0]
-				.setAttribute("visibility", "hidden");
-		}
-	});
-}
-
-app.controller("controller", function ($scope) {
-	"use strict";
-	
-	$scope.years = [
-		1865, 1875, 1885, 1895, 1905, 1915, 1925, 1935, 1945, 1955, 1965, 1975, 1985, 1995, 2005, 2015
-	];
-	
-	$scope.year = $scope.years[0];
-	
-	$scope.goto = function (year) {
-		$scope.year = year;
-		$scope.updateMap(year);
-	};
-	
-	$scope.updateMap = updateMap;
-	
-});
