@@ -1,0 +1,1 @@
+TYPE buildings.js presidents.js map.js scrollListen.js presPics.js onload.js | UGLIFYJS --screw-ie8 --mangle 1> min.js

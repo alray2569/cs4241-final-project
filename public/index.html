@@ -19,7 +19,10 @@
 		
 		<!--MY SCRIPTS-->
 		<script src="js/buildings.js"></script>
+		<script src="js/presidents.js"></script>
 		<script src="js/map.js"></script>
+		<script src="js/scrollListen.js"></script>
+		<script src="js/presPics.js"></script>
 		
 		<script src="js/onload.js"></script> <!--PUT ME LAST-->
 	</head>
@@ -30,6 +33,26 @@
 		<header>
 			<h1>WPI: A History</h1>
 			<p id="subtitle">{{year}}</p>
+			<nav>
+				<ul>
+					<li>
+						<a href="javascript:void;" data-ng-click="goto(1865)" data-ng-if="year !== 1865" name="Back to 1865">&lt;&lt;</a>
+					</li><!--
+					--><li data-ng-if="year < years[2]"> </li><!--
+					--><li data-ng-if="year < years[1]"> </li><!--
+					--><li data-ng-repeat="x in years track by $index" data-ng-if="!((x + 20 < year) || (x - 20 > year))">
+						<a href="javascript:void;" data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
+						<span style="font-weight: bold;" data-ng-if="x === year">{{x}}</span>
+					</li><!--
+					--><li data-ng-if="year > years[years.length - 3]"> </li><!--
+					--><li data-ng-if="year > years[years.length - 2]"> </li><!--
+					--><li>
+						<a href="javascript:void;" data-ng-click="goto(2015)" data-ng-if="year !== 2015" name="Go to 2015">&gt;&gt;</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div id="smheader">
 			<nav>
 				<ul>
 					<li>
@@ -48,19 +71,85 @@
 					</li>
 				</ul>
 			</nav>
-		</header>
-		<div class="content">
-			<main>
+		</div>
+		<div class="ctwrap">
+			<div class="content" id="ctleft">
 				<section id="content">
-				
+					Blah, blah
 				</section>
-			</main>
-			<section id="map">
-				<h2>WPI Map, {{year}}</h2>
-				<div style="background-color:white" 
-					 id="maphere">
-				</div>
-			</section>
+				<section id="stats">
+					<h2>Statistics</h2>
+					<table>
+						<tbody>
+							<tr>
+								<td>Average class size: </td>
+								<td>{{avgclass[year]}}</td>
+							</tr>
+							<tr>
+								<td>Faculty Size: </td>
+								<td>{{faculty[year]}}</td>
+							</tr>
+							<tr>
+								<td>Courses offered: </td>
+								<td>{{courses[year]}}</td>
+							</tr>
+							<tr>
+								<td>Average Lecture Size: </td>
+								<td>{{lecture[year]}}</td>
+							</tr>
+							<tr>
+								<td>Student organizations: </td>
+								<td>{{stuorgs[year]}}</td>
+							</tr>
+							<tr>
+								<td>Majors offered: </td>
+								<td>{{majors[year]}}</td>
+							</tr>
+							<tr>
+								<td>Tuition: </td>
+								<td>${{tuition[year]}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+			</div>
+			<div class="content" id="ctright">
+				<section id="map">
+					<h2>WPI Map</h2>
+					<div style="background-color:white" 
+						 id="maphere">
+						<!-- 
+							The SVG map will be inserted here
+						-->
+					</div>
+				</section>
+				<section id="president">
+					<h2>President of WPI</h2>
+					<div id="presdiv">
+						<figure id="ppfig1">
+							<img id="presPic"
+								 src="imgs/cthompson.jpg"
+								 alt="Charles O. Thompson"
+								 class="presPic">
+							<figcaption id="ppfigcap1">
+								Charles O. Thompson
+							</figcaption>
+						</figure>
+						<figure id="ppfig2">
+							<img id="presPic2"
+								 src="imgs/cthompson.jpg"
+								 alt="Charles O. Thompson"
+								 class="presPic">
+							<figcaption id="ppfigcap2">
+								Charles O. Thompson
+							</figcaption>
+						</figure>
+					</div>
+				</section>
+				<section id="content4">
+					Blah, blah4
+				</section>
+			</div>
 		</div>
 		
 		<!--ANGULAR MODULES, AS PER SPECS-->

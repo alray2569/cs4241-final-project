@@ -20,16 +20,47 @@
     to   { opacity: 1; }
 }
 
+#ppfig2 {
+	display: none;
+}
+
+#presdiv {
+	width: calc(100% - 30px);
+	
+	display: -ms-flex;
+	display: -webkit-flex;
+	display: flex;
+	
+	-ms-flex-flow: column nowrap;
+	-webkit-flex-flow: column nowrap;
+	flex-flow: column nowrap;
+	
+	-ms-align-items: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+figure {
+	max-width: calc(100% - 30px);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+figure > img {
+	max-width: 300px;
+	width: 100%;
+}
+
 body {
     background-color: #F66;
     padding: 0;
     margin: 0;
-	position: absolute;
 	top: 0;
 	font-family: 'PT Serif';
+	overflow-x: hidden;
 }
 
-div.content, header {
+div.content, header{
     color: #000;
 	visibility: hidden;
     -webkit-animation-duration: 1s;
@@ -38,15 +69,42 @@ div.content, header {
     animation-duration: 1s;
 }
 
+div.ctwrap {
+	-webkit-column-count: 2;
+	column-count: 2;
+	-webkit-column-gap: 2;
+	column-gap: 10px;
+}
+
+div.content {
+	-webkit-column-break-after: always;
+	break-after: column;
+	
+	margin-left: 0;
+	margin-right: 0;
+}
+
 section, header {
 	background-color: #999;
 }
 
-header {
+header, #smheader {
 	text-align: center;
 	vertical-align: middle;
 	display: block;
 	background: #999;
+}
+
+#smheader {
+	display: none;
+	position: fixed;
+	width: 100%;
+	margin: 0;
+	padding: 5px 0 15px 0;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	border-bottom: 1px solid black;
 }
 
 #subtitle {
@@ -112,26 +170,36 @@ h2 {
 	position: relative;
 	left: 30px;
 }
-
-section#map {
-	display: inline-flex;
-}
 	
 section {
-	width: calc(50% - 10px);
-	min-height: calc(50% - 10px);
+	display: flex;
+	width: calc(100%);
+	margin: 5px 0;
 }
 
-@media mobile {
-	
+#stats table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#stats tr > td:first-child {
+	text-align: right;
 }
 
 @media screen and (max-width: 500px) {
+	div.ctwrap {
+		-webkit-column-count: 1;
+		column-count: 1;
+	}
 	
+	div.content {
+		-webkit-break-column-after: auto;
+		break-after: auto;
+	}
 }
 
 @media screen and (min-width: 501px) {
-	div.content, header {
+	.ctwrap, header {
 		width: calc(90vw - 10px);
 		padding: 5px;
 		margin-left: 5vw;
@@ -139,16 +207,14 @@ section {
 		position: relative;
 	}
 	
-	header {
+	header, #mimic-header {
 		height: 100px;
 		margin-bottom: 20px;
 		margin-top: 5vh;
 	}
 	
 	div.content {
-		height: calc(80vh - 140px);
 		margin-top: 0;
-		margin-bottom: 5vw;
 	}
 	
 	nav {

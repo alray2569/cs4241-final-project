@@ -1,6 +1,7 @@
 (function () {
 	window.addEventListener("load", function () {
 		window.buildMap();
+		window.updatePresPic(1865);
 		
 		$("div.content, header")
 			.css("-webkit-animation-name", "fadein")
