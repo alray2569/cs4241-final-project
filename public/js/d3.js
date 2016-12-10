@@ -18,6 +18,8 @@ function scale(value, inmin, inmax, outmin, outmax) {
 }
 
 function d3Do () {
+	document.getElementById("graphClassSize").innerHTML = "";
+	
 	var margin = {top: 10, bottom: 30, left: 40, right: 10},
 		width = (window.innerWidth * 0.40) - 35,
 		height = 300,
@@ -29,8 +31,8 @@ function d3Do () {
 		yAxis = d3.svg.axis().scale(y).orient("left").ticks(5),
 
 		valueline = d3.svg.line()
-					.x(function(d) {return scale(d.key, 1865, 2015, 0, width);})
-					.y(function(d) {return height - d.value;})
+					.x(function(d) {return scale(d.key, 1865, 1935, 0, width);})
+					.y(function(d) {return height - scale(d.value, 0, 559/4, 0, height);})
 					.interpolate("linear"),
 
 		gcs = d3.select("#graphClassSize")
@@ -42,8 +44,8 @@ function d3Do () {
 	
 		data = toKV(window.avgclass);
 	
-	x.domain(d3.extent(data, function(d) {return scale(d.key, 1865, 2015, 0, width);}));
-	y.domain([0, d3.max(data, function(d) {return height - d.value;})]);
+	x.domain(d3.extent(data, function(d) {return d.key;}));
+	y.domain([0, d3.max(data, function(d) {return d.value;})]);
 	
 	console.log(data);
 	console.log(valueline(data));
