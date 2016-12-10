@@ -36,18 +36,18 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="javascript:void;" data-ng-click="goto(1865)" data-ng-if="year !== 1865" name="Back to 1865">&lt;&lt;</a>
+						<a href=#dummy data-ng-click="goto(1865)" data-ng-if="year !== 1865" title="Back to 1865">&lt;&lt;</a>
 					</li><!--
 					--><li data-ng-if="year < years[2]"> </li><!--
 					--><li data-ng-if="year < years[1]"> </li><!--
 					--><li data-ng-repeat="x in years track by $index" data-ng-if="!((x + 20 < year) || (x - 20 > year))">
-						<a href="javascript:void;" data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
+						<a href=#dummy data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
 						<span style="font-weight: bold;" data-ng-if="x === year">{{x}}</span>
 					</li><!--
 					--><li data-ng-if="year > years[years.length - 3]"> </li><!--
 					--><li data-ng-if="year > years[years.length - 2]"> </li><!--
 					--><li>
-						<a href="javascript:void;" data-ng-click="goto(2015)" data-ng-if="year !== 2015" name="Go to 2015">&gt;&gt;</a>
+						<a href=#dummy data-ng-click="goto(2015)" data-ng-if="year !== 2015" title="Forward to the present">&gt;&gt;</a>
 					</li>
 				</ul>
 			</nav>
@@ -56,25 +56,26 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="javascript:void;" data-ng-click="goto(year - 10)" data-ng-if="year !== 1868" name="Back 10 years">&lt;&lt;</a>
+						<a href=#dummy data-ng-click="goto(1865)" data-ng-if="year !== 1868" title="Back to 1865">&lt;&lt;</a>
 					</li><!--
 					--><li data-ng-if="year < years[2]"> </li><!--
 					--><li data-ng-if="year < years[1]"> </li><!--
 					--><li data-ng-repeat="x in years track by $index" data-ng-if="!((x + 20 < year) || (x - 20 > year))">
-						<a href="javascript:void;" data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
+						<a href=#dummy data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
 						<span style="font-weight: bold;" data-ng-if="x === year">{{x}}</span>
 					</li><!--
 					--><li data-ng-if="year > years[years.length - 3]"> </li><!--
 					--><li data-ng-if="year > years[years.length - 2]"> </li><!--
 					--><li>
-						<a href="javascript:void;" data-ng-click="goto(year + 10)" data-ng-if="year !== 2018" name="Forward 10 years">&gt;&gt;</a>
+						<a href=#dummy data-ng-click="goto(year + 10)" data-ng-if="year !== 2018" title="Forward to the present">&gt;&gt;</a>
 					</li>
 				</ul>
 			</nav>
 		</div>
 		<div class="ctwrap">
 			<div class="content" id="ctleft">
-				<section id="content">
+				<section id="maincontent">
+					<h2>WPI in {{year}}</h2>
 					Blah, blah
 				</section>
 				<section id="stats">
@@ -90,18 +91,6 @@
 								<td>{{faculty[year]}}</td>
 							</tr>
 							<tr>
-								<td>Courses offered: </td>
-								<td>{{courses[year]}}</td>
-							</tr>
-							<tr>
-								<td>Average Lecture Size: </td>
-								<td>{{lecture[year]}}</td>
-							</tr>
-							<tr>
-								<td>Student organizations: </td>
-								<td>{{stuorgs[year]}}</td>
-							</tr>
-							<tr>
 								<td>Majors offered: </td>
 								<td>{{majors[year]}}</td>
 							</tr>
@@ -110,6 +99,16 @@
 								<td>${{tuition[year]}}</td>
 							</tr>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="2">
+									<small>
+										Notes:<br/>
+										All statistics obtained from historical WPI course catalogs accessed with the kind permission of the WPI Gordon Library Office of Curation, Preservation, and Archives. <br/>
+										Statistics presented in the 1865 panel pertain to the 1868-9 academic year. All other statistics pertain to the academic year starting in the panel year.
+									</small>
+								</td>
+							</tr>
 					</table>
 				</section>
 			</div>
@@ -147,6 +146,7 @@
 					</div>
 				</section>
 				<section id="content4">
+					<h2>Life at WPI</h2>
 					Blah, blah4
 				</section>
 			</div>

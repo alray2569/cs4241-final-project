@@ -2,6 +2,7 @@
 	window.addEventListener("load", function () {
 		window.buildMap();
 		window.updatePresPic(1865);
+		window.setTimeout(window.preLoadPics, 2000);
 		
 		$("div.content, header")
 			.css("-webkit-animation-name", "fadein")

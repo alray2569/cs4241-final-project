@@ -16,6 +16,8 @@ function buildMap () {
 	var myRequest = new XMLHttpRequest();
 
 	myRequest.addEventListener("readystatechange", function(event) {
+		var x;
+		
 		if (this.readyState === 4) {
 			document.getElementById("maphere")
 				.innerHTML = this.responseText;

@@ -41,6 +41,18 @@ var http = require('http'),
     port = process.env.PORT || defport,
     pad = require('pad');
 
+function log (path, status, type) {
+	type = type || "";
+	
+	if (path.length < 25) {
+		console.log(pad(path,25) + status + "  " + type);
+	}
+	else {
+		console.log(path);
+		console.log(pad("",25) + status + "  " + type);
+	}
+}
+
 var server = http.createServer( (req, res) => {
     var stats, path, ext, mime;
     var uri = url.parse(req.url);
@@ -106,13 +118,13 @@ var server = http.createServer( (req, res) => {
 				else {
 					res.end(content, {'Content-type': 'text/html'});
 				}
-				console.log(pad(path,25) + "404  ");
+				log(path, 404);
 			});
 		}
 		else {
 			res.writeHead(200, {'Content-type': mime});
 			res.end(content, 'utf-8');
-			console.log(pad(path,25) + "200  " + pad(mime,15));
+			log(path, 200, mime);
 		}
 	});
     
