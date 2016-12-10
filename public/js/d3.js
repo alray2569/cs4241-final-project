@@ -63,3 +63,4 @@ function d3Do () {
 }
 
 window.onload = d3Do;
+window.onresize = d3Do;
