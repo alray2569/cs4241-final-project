@@ -3,8 +3,39 @@
 	<head>
 		<meta charset=utf-8>
 		<title>WPI: Historical Statistics</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="d3.css" />
+		
+		<!-- D3JS -->
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		
+		<!-- MY SCRIPT -->
+		<script src="js/stats.js"></script>
+		<script src="js/d3.js"></script>
 	</head>
 	<body>
-		
+		<header>
+			<h1>WPI: A History</h1>
+			<p id="subtitle">Statistical Trends</p>
+		</header>
+		<div class="ctwrap">
+			<div id="ctleft">
+				<section>
+					<h2>Avg. Class Size</h2>
+					<div id="graphClassSize" class="svgwrap">
+						
+					</div>
+				</section>
+				<section>
+					<h2>Faculty Size</h2>
+					<div id="graphFaculSize" class="svgwrap">
+						
+					</div>
+				</section>
+			</div>
+			<div id="ctright">
+				
+			</div>
+		</div>
 	</body>
 </html>
