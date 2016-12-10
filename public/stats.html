@@ -6,6 +6,12 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link rel="stylesheet" type="text/css" href="d3.css" />
 		
+		<!-- JQUERY -->
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+				integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" 
+				crossorigin="anonymous">
+		</script>
+		
 		<!-- D3JS -->
 		<script src="http://d3js.org/d3.v3.min.js"></script>
 		
@@ -14,11 +20,13 @@
 		<script src="js/d3.js"></script>
 	</head>
 	<body>
+		<div id="mode"></div>
 		<header>
 			<h1>WPI: A History</h1>
 			<p id="subtitle">Statistical Trends</p>
+			<nav><a href="/">&lt;&lt; Back to home</a></nav>
 		</header>
-		<div class="ctwrap">
+		<div class="ctwrap content">
 			<div id="ctleft">
 				<section>
 					<h2>Avg. Class Size</h2>
@@ -34,7 +42,18 @@
 				</section>
 			</div>
 			<div id="ctright">
-				
+				<section>
+					<h2>Courses of Study</h2>
+					<div id="graphCOS" class="svgwrap">
+						
+					</div>
+				</section>
+				<section>
+					<h2>Tuition (×$100)</h2>
+					<div id="graphTui" class="svgwrap">
+						
+					</div>
+				</section>
 			</div>
 		</div>
 	</body>

@@ -36,6 +36,7 @@ body {
     -o-animation-duration: 1s;
     animation-duration: 1s;
 	width: 100vw;
+	z-index: 0;
 }
 
 /* HEADING */
@@ -54,6 +55,12 @@ header {
 	vertical-align: middle;
 	display: block;
 	background: #999;
+	
+	visibility: hidden;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
 }
 
 #smheader {
@@ -209,7 +216,19 @@ table tbody td:first-child {
 	visibility: hidden;
 }
 
-@media screen and (min-device-width: 768px) and (min-width: 500px) {
+#mode {
+	position: absolute;
+	top: -999em;
+	left: -999em;
+	
+	z-index: 2;
+}
+
+@media screen and (min-device-width: 768px) and (min-width: 600px) {
+	body {
+		z-index: 1;
+	}
+	
 	div.ctwrap {
 		display: -ms-flex;
 		display: -webkit-flex;
@@ -256,12 +275,17 @@ table tbody td:first-child {
 		position: relative;
 		left: 30px;
 	}
+	
+	#mode {
+		z-index: 1;
+	}
 }
 
 /* FOR MOBILE DEVICES */
 @media screen and (max-device-width: 786px) {
 	body {
 		font-size: 2.5em;
+		z-index: 2;
 	}
 	
 	header {
@@ -273,5 +297,9 @@ table tbody td:first-child {
 	
 	nav li {
 		width: 125px;
+	}
+	
+	#mode {
+		z-index: 3;
 	}
 }

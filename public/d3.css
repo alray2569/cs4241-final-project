@@ -12,5 +12,15 @@ path {
 }
 
 .svgwrap {
-	background-color: white;
+	background-color: lightgrey;
+}
+
+@media screen and (max-device-width: 786px) {
+	path {
+		stroke-width: 4;
+	}
+	
+	.axis path, .axis line {
+		stroke-width: 2;
+	}
 }
