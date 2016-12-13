@@ -152,6 +152,11 @@ section {
 	margin: 5px 0;
 	width: calc(100%);
 	overflow-y: visible;
+	min-height: 200px;
+}
+
+section p {
+	margin: 5px;
 }
 
 h2 {
@@ -274,6 +279,8 @@ table tbody td:first-child {
 		
 		position: relative;
 		left: 30px;
+		
+		padding: 0%;
 	}
 	
 	#mode {

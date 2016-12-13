@@ -1,6 +1,6 @@
 var app = new angular.module("WPIHistory", []);
 
-app.controller("controller", function ($scope) {
+app.controller("controller", function ($scope, $http, $sce) {
 	"use strict";
 	
 	$scope.years = window.years;
@@ -21,4 +21,17 @@ app.controller("controller", function ($scope) {
 	$scope.updateMap = window.updateMap;
 	$scope.updatePresPic = window.updatePresPic;
 	
+	$http.get("text.json")
+		.then(
+			function success (response) {
+				$scope.text = response.data;
+			}, function failure (response) {
+				window.console.log(response);
+			}
+		);
+	
+	
+	$scope.getHtml = function (text) {
+		return $sce.trustAsHtml(text);
+	};
 });
