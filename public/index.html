@@ -33,22 +33,39 @@
 		  data-role="application">
 		<header>
 			<h1>WPI: A History</h1>
-			<p id="subtitle">{{year}}</p>
+			<p id="subtitle">Timeline</p>
 			<nav>
 				<ul>
 					<li>
-						<a href=# onclick="return false;" data-ng-click="goto(1865)" data-ng-if="year !== 1865" title="Back to 1865">&lt;&lt;</a>
+						<a href=#1865
+						   data-ng-click="goto(1865)" 
+						   data-ng-if="year !== 1865" 
+						   title="Back to 1865">
+							&lt;&lt;
+						</a>
 					</li><!--
-					--><li data-ng-if="year < years[2]"> </li><!--
-					--><li data-ng-if="year < years[1]"> </li><!--
-					--><li data-ng-repeat="x in years track by $index" data-ng-if="!((x + 20 < year) || (x - 20 > year))">
-						<a href=# onclick="return false;" data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
-						<span style="font-weight: bold;" data-ng-if="x === year">{{x}}</span>
+					--><li data-ng-if="year < years[2]"></li><!--
+					--><li data-ng-if="year < years[1]"></li>
+					<li data-ng-repeat="x in years" 
+						data-ng-if="!((x+20<year)||(x-20>year))">
+						<a href="#" 
+						   data-ng-attr-href=#{{x}} 
+						   data-ng-if="x !== year" 
+						   data-ng-click="goto(x)">
+							{{x}}
+						</a>
+						<span style="font-weight: bold;" 
+							  data-ng-if="x === year">{{x}}</span>
 					</li><!--
 					--><li data-ng-if="year > years[years.length - 3]"> </li><!--
 					--><li data-ng-if="year > years[years.length - 2]"> </li><!--
 					--><li>
-						<a href=# onclick="return false;" data-ng-click="goto(2015)" data-ng-if="year !== 2015" title="Forward to the present">&gt;&gt;</a>
+						<a href=#2015
+						   data-ng-click="goto(2015)"
+						   data-ng-if="year !== 2015"
+						   title="Forward to the present">
+							&gt;&gt;
+						</a>
 					</li>
 				</ul>
 			</nav>
@@ -57,18 +74,37 @@
 			<nav>
 				<ul>
 					<li>
-						<a href=# onclick="return false;" data-ng-click="goto(1865)" data-ng-if="year !== 1865" title="Back to 1865">&lt;&lt;</a>
+						<a href=#1865 
+						   data-ng-click="goto(1865)" 
+						   data-ng-if="year !== 1865" 
+						   title="Back to 1865">
+							&lt;&lt;
+						</a>
 					</li><!--
 					--><li data-ng-if="year < years[2]"> </li><!--
 					--><li data-ng-if="year < years[1]"> </li><!--
-					--><li data-ng-repeat="x in years track by $index" data-ng-if="!((x + 20 < year) || (x - 20 > year))">
-						<a href=# onclick="return false;" data-ng-if="x !== year" data-ng-click="goto(x)">{{x}}</a>
-						<span style="font-weight: bold;" data-ng-if="x === year">{{x}}</span>
+				 --><li data-ng-repeat="x in years" 
+						data-ng-if="!((x+20<year)||(x-20>year))">
+						<a href=# 
+						   data-ng-attr-href=#{{x}}
+						   data-ng-if="x !== year" 
+						   data-ng-click="goto(x)">
+							{{x}}
+						</a>
+						<span style="font-weight: bold;" 
+							  data-ng-if="x === year">
+							{{x}}
+						</span>
 					</li><!--
 					--><li data-ng-if="year > years[years.length - 3]"> </li><!--
 					--><li data-ng-if="year > years[years.length - 2]"> </li><!--
 					--><li>
-						<a href=# onclick="return false;" data-ng-click="goto(year + 10)" data-ng-if="year !== 2015" title="Forward to the present">&gt;&gt;</a>
+						<a href=#2015
+						   data-ng-click="goto(2015)"
+						   data-ng-if="year !== 2015"
+						   title="Forward to the present">
+							&gt;&gt;
+						</a>
 					</li>
 				</ul>
 			</nav>

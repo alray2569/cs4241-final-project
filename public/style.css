@@ -23,6 +23,7 @@
 }
 
 /* GENERAL PAGE */
+
 body {
     background-color: #F66;
     padding: 0;
@@ -61,6 +62,10 @@ header {
     -moz-animation-duration: 1s;
     -o-animation-duration: 1s;
     animation-duration: 1s;
+}
+
+footer {
+	text-align: center;
 }
 
 #smheader {
@@ -162,6 +167,10 @@ section p {
 h2 {
 	display: block;
 	margin: 5px;
+}
+
+#maincontent h2 {
+	font-size: 180%;
 }
 
 figure {
