@@ -42,15 +42,15 @@ var http = require('http'),
     port = process.env.PORT || defport,
     pad = require('pad');
 
-function log (path, status, type) {
+function log (path, status, ip, type) {
 	type = type || "";
 	
 	if (path.length < 25) {
-		console.log(pad(path,25) + status + "  " + type);
+		console.log(pad(path,25) + status + "  " + pad(type, 25) + ip);
 	}
 	else {
 		console.log(path);
-		console.log(pad("",25) + status + "  " + type);
+		console.log(pad("",25) + status + "  " + pad(type, 25) + ip);
 	}
 }
 
@@ -119,13 +119,13 @@ var server = http.createServer( (req, res) => {
 				else {
 					res.end(content, {'Content-type': 'text/html'});
 				}
-				log(path, 404);
+				log(path, 404, req.connection.remoteAddress);
 			});
 		}
 		else {
 			res.writeHead(200, {'Content-type': mime});
 			res.end(content, 'utf-8');
-			log(path, 200, mime);
+			log(path, 200, req.connection.remoteAddress, mime);
 		}
 	});
     

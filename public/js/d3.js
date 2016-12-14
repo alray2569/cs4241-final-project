@@ -39,8 +39,8 @@ function d3Do () {
 		
 		margin = {
 			top: mode === 2 ? 15 : 10, 
-			bottom: mode === 2 ? 60 : 30, 
-			left: mode === 2 ? 100 : 40, 
+			bottom: mode === 2 ? 75 : 40, 
+			left: mode === 2 ? 120 : 50, 
 			right: mode === 2 ? 30 : 20},
 		
 		width = (
@@ -62,13 +62,16 @@ function d3Do () {
 			// use the values of years as major ticks
 			.tickValues(window.years)
 			.tickFormat(function (datum, index) {
-				return mode === 2 || width < 300?
+				return '’' + (datum+"").substring(2);
+				
+				/*mode === 2 || width < 500?
 					// in mobile (mode 2) and narrow graphs
 					// (width < 300px), abbreviate the year 
 					//from, say, 1865, to ’65.
 					'’' + (datum + "").substring(2):
 					// in wider graphs, don't abbreviate
 					datum;
+					*/
 			}),
 		yAxis = d3.svg.axis().scale(y).orient("left").ticks(5),
 
@@ -76,7 +79,7 @@ function d3Do () {
 		valueline = d3.svg.line()
 					.x(function(d) {
 						// x axis needs to be scaled
-						return scale(d.key, 1865, 1935, 0, width);
+						return scale(d.key, 1865, 2015, 0, width);
 					})
 					.y(function(d) {
 						// as does y.
@@ -144,8 +147,13 @@ function d3Do () {
 	// add the x-axis
 	gcs.append("g")
 		.attr("class", "x axis")
-		.attr("transform", "translate(0, " + height + ")")
-		.call(xAxis);
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis)
+		.selectAll("text")  
+			.style("text-anchor", "end")
+			.attr("dx", "-.8em")
+			.attr("dy", ".15em")
+			.attr("transform", "rotate(-65)");
 	
 	// add the y-axis
 	gcs.append("g")
@@ -155,7 +163,7 @@ function d3Do () {
 	// FACULTY SIZE GRAPH
 	// need to adjust the valueline function to use new max y.
 	valueline = d3.svg.line()
-		.x(function(d) {return scale(d.key, 1865, 1935, 0, width);})
+		.x(function(d) {return scale(d.key, 1865, 2015, 0, width);})
 		.y(function(d) {return height - scale(d.value, 0, d3.max(data2, function(d) {return d.value;}), 0, height);})
 		.interpolate("linear");
 	
@@ -169,8 +177,13 @@ function d3Do () {
 	
 	gfs.append("g")
 		.attr("class", "x axis")
-		.attr("transform", "translate(0, " + height + ")")
-		.call(xAxis);
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis)
+		.selectAll("text")  
+			.style("text-anchor", "end")
+			.attr("dx", "-.8em")
+			.attr("dy", ".15em")
+			.attr("transform", "rotate(-65)");
 	
 	gfs.append("g")
 		.attr("class", "y axis")
@@ -179,7 +192,7 @@ function d3Do () {
 	
 	// COURSES OF STUDY
 	valueline = d3.svg.line()
-		.x(function(d) {return scale(d.key, 1865, 1935, 0, width);})
+		.x(function(d) {return scale(d.key, 1865, 2015, 0, width);})
 		.y(function(d) {return height - scale(d.value, 0, d3.max(data3, function(d) {return d.value;}), 0, height);})
 		.interpolate("linear");
 	
@@ -192,8 +205,13 @@ function d3Do () {
 	
 	cos.append("g")
 		.attr("class", "x axis")
-		.attr("transform", "translate(0, " + height + ")")
-		.call(xAxis);
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis)
+		.selectAll("text")  
+			.style("text-anchor", "end")
+			.attr("dx", "-.8em")
+			.attr("dy", ".15em")
+			.attr("transform", "rotate(-65)");
 	
 	cos.append("g")
 		.attr("class", "y axis")
@@ -203,12 +221,17 @@ function d3Do () {
 	// Note that for this graph, we divide the y values
 	// by 100 for display on the graph.
 	valueline = d3.svg.line()
-		.x(function(d) {return scale(d.key, 1865, 1935, 0, width);})
-		.y(function(d) {return height - scale(d.value / 100, 0, d3.max(data4, function(d) {return d.value / 100;}), 0, height);})
+		.x(function(d) {return scale(d.key, 1865, 2015, 0, width);})
+		.y(function(d) {return height - scale(Math.log(d.value) / Math.log(10), 0, 5, 0, height);})
 		.interpolate("linear");
 	
 	x.domain(d3.extent(data4, function(d) {return d.key;}));
-	y.domain([0, d3.max(data4, function(d) {return d.value / 100;})]);
+	y.domain([0, 5]);
+	
+	yAxis.tickFormat(function (d) {
+		var sup = ['\u2070','\u00B9','\u00B2','\u00B3','\u2074','\u2075','\u2076','\u2077','\u2078','\u2079'];
+		return 10 + sup[d];
+	});
 	
 	tui.append("path")
 		.attr("class", "line")
@@ -216,8 +239,13 @@ function d3Do () {
 	
 	tui.append("g")
 		.attr("class", "x axis")
-		.attr("transform", "translate(0, " + height + ")")
-		.call(xAxis);
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis)
+		.selectAll("text")  
+			.style("text-anchor", "end")
+			.attr("dx", "-.8em")
+			.attr("dy", ".15em")
+			.attr("transform", "rotate(-65)");
 	
 	tui.append("g")
 		.attr("class", "y axis")
